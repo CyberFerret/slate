@@ -4698,6 +4698,176 @@ So to build the `answer` object, you will need to structure it as shown like _(E
 ```
 
 
+## Get Application Stage Tracking
+
+```ruby
+require 'rest-client'
+
+endpoint = 'https://api.hrpartner.io/application_stage_tracking/'
+header = {'x-api-key' => 'ee095c2f58da4f36d087ca7794384f4d'}
+
+result = RestClient.get(endpoint, header)
+
+puts result
+```
+
+```shell
+curl "https://api.hrpartner.io/application_stage_tracking"
+  -H "x-api-key:ee095c2f58da4f36d087ca7794384f4d"
+```
+
+```javascript
+var Client = require('node-rest-client').Client;
+ 
+var client = new Client();
+var endpoint = "https://api.hrpartner.io/application_stage_tracking";
+var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
+
+client.get(endpoint, info, function(data, response) {
+  console.log(response;
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 120458,
+    "applicant_id": "u4GDSDaNxTED6hVzstyPMw",
+    "applicant_email": "shaydefoye@mailinator.com",
+    "applicant_name": "Foye, Shayde",
+    "job_id": "warehouse-assistant-lk",
+    "job_title": "Warehouse Assistant",
+    "changed_at": "2020-06-12T02:14:50+00:00",
+    "from_stage": "Interview",
+    "to_stage": "Job Offer"
+  },
+  {
+    "id": 120613,
+    "applicant_id": "u4GDSDaNxTED6hVzstyPMw",
+    "applicant_email": "shaydefoye@mailinator.com",
+    "applicant_name": "Foye, Shayde",
+    "job_id": "warehouse-assistant-lk",
+    "job_title": "Warehouse Assistant",
+    "changed_at": "2020-06-12T02:15:18+00:00",
+    "from_stage": "Job Offer",
+    "to_stage": "Rejected"
+  },
+  {
+    "id": 120655,
+    "applicant_id": "hnR8RHJZdSD6VrJUe0hEhw",
+    "applicant_email": "nestakaisin@mailinator.com",
+    "applicant_name": "Kaisin, Nesta",
+    "job_id": "warehouse-assistant-lk",
+    "job_title": "Warehouse Assistant",
+    "changed_at": "2020-06-12T02:15:42+00:00",
+    "from_stage": "Applied",
+    "to_stage": "Interview"
+  },
+  {
+    "id": 120780,
+    "applicant_id": "XjnGAvV2he8fHfm-PqilQQ",
+    "applicant_email": "raydeleter@mailinator.com",
+    "applicant_name": "Deleter, Raymond",
+    "job_id": "senior-javascript-developer-kj",
+    "job_title": "Senior Javascript Developer",
+    "changed_at": "2020-06-12T02:19:23+00:00",
+    "from_stage": "Second Interview",
+    "to_stage": "Job Offer"
+  },
+  {
+    "id": 120818,
+    "applicant_id": "xU6ilFbi5Ix6qYbfneipiw",
+    "applicant_email": "ianturpington@mailinator.com",
+    "applicant_name": "Turpington, Ian",
+    "job_id": "warehouse-manager--distribution--zd",
+    "job_title": "Warehouse Manager (Distribution)",
+    "changed_at": "2020-06-12T02:21:26+00:00",
+    "from_stage": "Applied",
+    "to_stage": "Initial Contact"
+  },
+  {
+    "id": 120943,
+    "applicant_id": "xU6ilFbi5Ix6qYbfneipiw",
+    "applicant_email": "ianturpington@mailinator.com",
+    "applicant_name": "Turpington, Ian",
+    "job_id": "warehouse-manager--distribution--zd",
+    "job_title": "Warehouse Manager (Distribution)",
+    "changed_at": "2020-06-12T02:24:44+00:00",
+    "from_stage": "Initial Contact",
+    "to_stage": "First Interview"
+  },
+  {
+    "id": 121011,
+    "applicant_id": "Z4tDh4U7tYbkTIF2-DkSrg",
+    "applicant_email": "suzein@mailinator.com",
+    "applicant_name": "Norton, Susan",
+    "job_id": "warehouse-manager--distribution--zd",
+    "job_title": "Warehouse Manager (Distribution)",
+    "changed_at": "2020-06-12T02:24:56+00:00",
+    "from_stage": "(none)",
+    "to_stage": "First Interview"
+  },
+  {
+    "id": 121098,
+    "applicant_id": "xFqp67fLgzUMCEP_l8wC9Q",
+    "applicant_email": "stevecreole@mailinator.com",
+    "applicant_name": "Creole, Steve",
+    "job_id": "warehouse-manager--distribution--zd",
+    "job_title": "Warehouse Manager (Distribution)",
+    "changed_at": "2020-06-12T02:25:14+00:00",
+    "from_stage": "(none)",
+    "to_stage": "First Interview"
+  },
+  {
+    "id": 121151,
+    "applicant_id": "xFqp67fLgzUMCEP_l8wC9Q",
+    "applicant_email": "stevecreole@mailinator.com",
+    "applicant_name": "Creole, Steve",
+    "job_id": "warehouse-manager--distribution--zd",
+    "job_title": "Warehouse Manager (Distribution)",
+    "changed_at": "2020-06-12T02:36:17+00:00",
+    "from_stage": "First Interview",
+    "to_stage": "Second Interview"
+  }
+]
+```
+
+This endpoint retrieves all job applications stage tracking information in the system.
+
+### HTTP Request
+
+`GET https://api.hrpartner.io/application_stage_tracking`
+
+This call will retrieve all job application tracking information in the system.  This helps you to build a trail of the movement of job applications within your recruitment module over time, and can also help you to trigger certain actions when applicants reach a particular stage in a job application..
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | --------- | -----------
+job | text | Return only application tracking for this job ID.
+applicant | text | Return only application tracking for this applicant email or unique ID.
+from_stage | text | Return tracking data that moved FROM this stage name.
+to_stage | text | Return tracking data that moved TO this stage name.
+changed_at_from, changed_at_to | date (yyyy-mm-dd) | Fetch only application tracking that happened between these two dates.
+
+
+### Examples
+
+To get a list of all application tracking for from 1st to 30th June 2020:
+
+`GET https://api.hrpartner.io/application_stage_tracking?changed_at_from=2020-06-01&changed_at_to=2020-06-30`
+
+To get all application tracking for applicant steve@mycompany.com which moved to the 'Interview' stage:
+
+`GET https://api.hrpartner.io/application_stage_tracking?applicant=steve@mycompany.com&to_stage=Interview`
+
+To get all application tracking for the job `delivery-truck-driver-oh6P` where the applicants moved on from the 'Reference Check' stage:
+
+`GET https://api.hrpartner.io/application_stage_tracking?job=delivery-truck-driver-oh6P&from_stage=Reference Check`
+
+
 
 
 
