@@ -276,6 +276,7 @@ tag | text | Only return employees who have this tag (single tag only).
 is_active | true/false | Choose whether to return only active employees.
 is_terminated | true/false | Choose whether to return only terminated employees.
 can_logon | true/false | Choose whether to return only employee who can logon to their portal.
+reports_to | text | Only return employees who report to the employee with this Employee Code
 
 
 ### Examples
@@ -291,6 +292,10 @@ To get all employees in either the "Admin Team" or "Warehouse" departments:
 To get all full time employees who started employment during March 2020:
 
 `GET https://api.hrpartner.io/employees?start_date_from=2020-03-01&start_date_to=2020-03-31&employment_status=Full Time`
+
+To get all employees who report to the person that has Employee Code "EMP001", who are not terminated:
+
+`GET https://api.hrpartner.io/employees?is_terminated=false&reports_to=EMP001`
 
 
 ## Get A Specific Employee
@@ -364,6 +369,7 @@ client.get(endpoint + employeecode, info, function(data, response) {
   "location": "Main Office",
   "position": "Warehouse Supervisor",
   "employment_status": "Full Time",
+  "reports_to": "BURRS",
   "tags": [
     {
       "tag": "Smoker"
@@ -590,6 +596,7 @@ client.post(endpoint + employeecode, info, function(data, response) {
   "location": "Main Office",
   "position": "Warehouse Supervisor",
   "employment_status": "Contract",
+  "reports_to": "BURRS",
   "tags": [
     {
       "tag": "Smoker"
@@ -705,6 +712,7 @@ department<sup>+</sup> | text | Department name that the employee belongs to
 location<sup>+</sup> | text | Location that the employee is in
 position<sup>+</sup> | text | Employee's position or job title
 employment_status<sup>+</sup> | text| The employment status of the employee (i.e. Full Time, Part Time, Contractor etc.)
+reports_to | text| The Employee Code of the person this employee reports to
 tags | object | See [**Tags**](#tags) structure below
 employee_contacts | object | See [**Employee Contacts**](#employee-contacts) structure below
 employee_addresses | object | See [**Employee Addresses**](#employee-addresses) structure below
