@@ -2852,6 +2852,7 @@ skill_names | Skill names
 skill_ratings | Skill ratings
 stages | Application stages
 tags | Tags used within HR Partner
+termination_reasons | List of termination reasons
 training_types | Training types
 training_statuses | Training statuses
 
