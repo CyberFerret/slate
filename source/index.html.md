@@ -4714,7 +4714,7 @@ So to build the `answer` object, you will need to structure it as shown like _(E
 ```ruby
 require 'rest-client'
 
-endpoint = 'https://api.hrpartner.io/application_stage_tracking/'
+endpoint = 'https://api.hrpartner.io/stage/track/'
 header = {'x-api-key' => 'ee095c2f58da4f36d087ca7794384f4d'}
 
 result = RestClient.get(endpoint, header)
@@ -4723,7 +4723,7 @@ puts result
 ```
 
 ```shell
-curl "https://api.hrpartner.io/application_stage_tracking"
+curl "https://api.hrpartner.io/stage/track"
   -H "x-api-key:ee095c2f58da4f36d087ca7794384f4d"
 ```
 
@@ -4731,7 +4731,7 @@ curl "https://api.hrpartner.io/application_stage_tracking"
 var Client = require('node-rest-client').Client;
  
 var client = new Client();
-var endpoint = "https://api.hrpartner.io/application_stage_tracking";
+var endpoint = "https://api.hrpartner.io/stage/track";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
 
 client.get(endpoint, info, function(data, response) {
@@ -4849,9 +4849,14 @@ This endpoint retrieves all job applications stage tracking information in the s
 
 ### HTTP Request
 
-`GET https://api.hrpartner.io/application_stage_tracking`
+`GET https://api.hrpartner.io/stage/track`
 
-This call will retrieve all job application tracking information in the system.  This helps you to build a trail of the movement of job applications within your recruitment module over time, and can also help you to trigger certain actions when applicants reach a particular stage in a job application..
+This call will retrieve all job application tracking information in the system.  This helps you to build a trail of the movement of job applications within your recruitment module over time, and can also help you to trigger certain actions when applicants reach a particular stage in a job application.
+
+<aside class="info">
+  <strong>NOTE:</strong> This API call is limited to 500 records in response to preserve our server resources, due to the large number of tracking transactions that can exist in a company that does a lot of hiring.  We highly recommend that you use one of the query parameters below to filter your requests to return less than 500 results.
+</aside>
+
 
 ### Query Parameters
 
@@ -4868,15 +4873,15 @@ changed_at_from, changed_at_to | date (yyyy-mm-dd) | Fetch only application trac
 
 To get a list of all application tracking for from 1st to 30th June 2020:
 
-`GET https://api.hrpartner.io/application_stage_tracking?changed_at_from=2020-06-01&changed_at_to=2020-06-30`
+`GET https://api.hrpartner.io/stage/track?changed_at_from=2020-06-01&changed_at_to=2020-06-30`
 
 To get all application tracking for applicant steve@mycompany.com which moved to the 'Interview' stage:
 
-`GET https://api.hrpartner.io/application_stage_tracking?applicant=steve@mycompany.com&to_stage=Interview`
+`GET https://api.hrpartner.io/stage/track?applicant=steve@mycompany.com&to_stage=Interview`
 
 To get all application tracking for the job `delivery-truck-driver-oh6P` where the applicants moved on from the 'Reference Check' stage:
 
-`GET https://api.hrpartner.io/application_stage_tracking?job=delivery-truck-driver-oh6P&from_stage=Reference Check`
+`GET https://api.hrpartner.io/stage/track?job=delivery-truck-driver-oh6P&from_stage=Reference Check`
 
 
 
