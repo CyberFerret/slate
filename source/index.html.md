@@ -4070,6 +4070,23 @@ client.get(endpoint + jobid, info, function(data, response) {
     "last_name": "Anthony",
     "email": "susananthony@mailinator.com",
     "stage": "Applied",
+    "custom_form": {
+      "answers": {
+        "why-work-for-us": "Because I am a great driver!",
+        "biggest-achievements": "",
+        "current-licence-number": "AAA12345",
+        "years-held": "10",
+        "vehicle-licences": [
+          "truck-rigid",
+          "truck-prime-mover"
+        ],
+        "licence-state": "OH",
+        "last-currency-check": "",
+        "licence-endorsements": [
+          "class-a"
+        ]
+      }
+    },
     "source": "Entered by Arthur Dent",
     "submitted_at": "2020-05-28T09:17:02+00:00",
     "is_flagged": false,
@@ -4086,6 +4103,25 @@ client.get(endpoint + jobid, info, function(data, response) {
     "last_name": "Strange",
     "email": "johnnystrange@mailinator.com",
     "stage": "Interview",
+    "custom_form": {
+      "answers": {
+        "why-work-for-us": "Highly experienced and motivated.",
+        "biggest-achievements": "Worked for the biggest trucking firm in the UK.",
+        "current-licence-number": "H83374-A",
+        "years-held": "32",
+        "vehicle-licences": [
+          "truck-rigid",
+          "truck-prime-mover",
+          "truck-articulated"
+        ],
+        "licence-state": "AL",
+        "last-currency-check": "2019-04-15",
+        "licence-endorsements": [
+          "class-b",
+          "class-c"
+        ]
+      }
+    },
     "source": "[Job Portal] http://mycompany.hrpartner.io/jobs",
     "submitted_at": "2020-05-28T09:18:00+00:00",
     "is_flagged": true,
@@ -4102,6 +4138,23 @@ client.get(endpoint + jobid, info, function(data, response) {
     "last_name": "Rogers",
     "email": "janinerogers@mailinator.com",
     "stage": "Interview",
+    "custom_form": {
+      "answers": {
+        "why-work-for-us": "Been out of work for 2 years now.",
+        "biggest-achievements": "",
+        "current-licence-number": "38847663",
+        "years-held": "5",
+        "vehicle-licences": [
+          "car-sedan",
+          "small-van"
+        ],
+        "licence-state": "NY",
+        "last-currency-check": "2020-04-13",
+        "licence-endorsements": [
+          "class-a"
+        ]
+      }
+    },
     "source": "Entered by Arthur Dent",
     "submitted_at": "2020-05-28T09:29:25+00:00",
     "is_flagged": false,
@@ -4112,7 +4165,7 @@ client.get(endpoint + jobid, info, function(data, response) {
 ]
 ```
 
-This endpoint retrieves all job applications for a particular job listing that are currently in the system.
+This endpoint retrieves all job applications (and the answers to the custom form questions, if any) for a particular job listing that are currently in the system.
 
 ### HTTP Request
 
@@ -4218,6 +4271,7 @@ client.get(endpoint + applicationid, info, function(data, response) {
     "is_active": true
   },
   "custom_form": {
+    "name": "Developer Screening Questions",
     "answers": {
       "areas-of-expertise": [
         "javascript",
@@ -4462,6 +4516,7 @@ client.post(endpoint, info, function(data, response) {
     "is_active": true
   },
   "custom_form": {
+    "name": "Developer Screening Questions",
     "answers": {
       "areas-of-expertise": [
         "javascript",
