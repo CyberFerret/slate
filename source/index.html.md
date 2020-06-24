@@ -779,7 +779,7 @@ country | text | Must contain the valid name of a country
 
 
 
-# Modules
+# Employee Sub Modules
 
 The following sections contain the methods required to read the sub module or category data for each employee.  At the current time, we only support reading of data from these modules, but a future version of the API may include write back ability.
 
