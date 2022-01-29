@@ -1972,6 +1972,7 @@ department | text | Specify one or more department names (separated by commas) t
 note | text | Return only notes with this partial text within the note text field.
 created_date_from, created_date_to | date (yyyy-mm-dd) | Return notes that were created between these two dates (inclusive).
 updated_date_from, updated_date_to | date (yyyy-mm-dd) | Return only notes which were updated/modified between these two dates (inclusive).
+tags | text | Return only notes that have the matching hashtags.  Specify tags in a comma separated list without the leading '#' character.
 
 ### Examples
 
@@ -1986,6 +1987,10 @@ To find all notes created in March 2020:
 To find all notes that contain the word 'promotion' and were modified in the first week of March 2020:
 
 `GET https://api.hrpartner.io/notes?note=promotion&updated_date_from=2020-03-01&updated_date_to=2020-03-08`
+
+To find all notes for employee code WILSJ that have the '#late' or '#workshop' hashtags:
+
+`GET https://api.hrpartner.io/notes?employee=WILSJ&tags=late,workshop`
 
 ### Attachments
 
