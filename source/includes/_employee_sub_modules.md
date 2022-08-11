@@ -24,7 +24,7 @@ curl "https://api.hrpartner.io/absences"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/absences";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -40,6 +40,7 @@ client.get(endpoint, info, function(data, response) {
 [
   {
     "id": 14,
+    "leave_type": "taken",
     "absence_reason": "Sick Leave",
     "description": "High fever",
     "absence_date": "2015-05-05",
@@ -59,6 +60,7 @@ client.get(endpoint, info, function(data, response) {
   },
   {
     "id": 5,
+    "leave_type": "taken",
     "absence_reason": "Bereavement Leave",
     "description": "Attended auntie's funeral",
     "absence_date": "2015-07-09",
@@ -85,6 +87,7 @@ client.get(endpoint, info, function(data, response) {
   },
   {
     "id": 12,
+    "leave_type": "taken",
     "absence_reason": "Sick Leave",
     "description": "Not feeling well",
     "absence_date": "2015-08-11",
@@ -105,7 +108,7 @@ client.get(endpoint, info, function(data, response) {
 ]
 ```
 
-The Absences module contains the records for each employee's leave or vacation time taken off.
+The Absences module contains the records for each employee's leave or vacation time taken off.  Now also includes any TOIL/Flexi time that has been added back as well.
 
 ### HTTP Request
 
@@ -118,6 +121,7 @@ Parameter | Type | Description
 employee | text | Specify the employee code to only see the absence records for that particular employee.
 department | text | Specify one or more department names (separated by commas) to only show employee absences within that department.
 location | text | Only return employees within this location.
+type | text | Specifies whether you want "taken" leave records or "added" leave (TOIL/Flexi)
 absence_reason | text | Return only absence records with this particular absence reason.
 duration_from, duration_to | number | Return only leave records with a duration between these values (inclusive).
 physician | text | Return record with this partial text in the physician name field.
@@ -139,6 +143,11 @@ To get all sick leave records approved by Dr. Smith:
 To get all 'Approved' leave records that occured during March 2020:
 
 `GET https://api.hrpartner.io/absences?absence_date_from=2020-03-01&absence_date_to=2020-03-31&absence_status=Approved`
+
+To get all TOIL/Flexi additions for the month of April 2020:
+
+`GET https://api.hrpartner.io/absences?absence_date_from=2020-04-01&absence_date_to=2020-04-30&type=added`
+
 
 ### Attachments
 
@@ -172,7 +181,7 @@ curl "https://api.hrpartner.io/assets"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/assets";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -234,7 +243,7 @@ client.get(endpoint, info, function(data, response) {
       "department": "Sales"
     }
   }
-]  
+]
 ```
 
 The Assets module contains the records for company equipment that is on loan to the employee.
@@ -302,7 +311,7 @@ curl "https://api.hrpartner.io/assets"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/assets";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -413,7 +422,7 @@ curl "https://api.hrpartner.io/benefits"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/benefits";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -542,7 +551,7 @@ curl "https://api.hrpartner.io/dependents"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/dependents";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -683,7 +692,7 @@ curl "https://api.hrpartner.io/education"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/education";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -814,7 +823,7 @@ curl "https://api.hrpartner.io/grievances"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/grievances";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -943,7 +952,7 @@ curl "https://api.hrpartner.io/interviews"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/interviews";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -1095,7 +1104,7 @@ curl "https://api.hrpartner.io/notes"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/notes";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -1243,7 +1252,7 @@ curl "https://api.hrpartner.io/positions"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/positions";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -1405,7 +1414,7 @@ curl "https://api.hrpartner.io/renewables"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/renewables";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -1536,7 +1545,7 @@ curl "https://api.hrpartner.io/reviews"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/reviews";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -1688,7 +1697,7 @@ curl "https://api.hrpartner.io/skills"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/skills";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -1829,7 +1838,7 @@ curl "https://api.hrpartner.io/training"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/training";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};

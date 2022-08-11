@@ -18,6 +18,8 @@ includes:
   - reminders
   - recruitment
   - timesheets
+  - projects
+  - leave_requests
   - modules
   - errors
 
@@ -57,7 +59,7 @@ curl "https://api.hrpartner.io/employees"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/employees";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
