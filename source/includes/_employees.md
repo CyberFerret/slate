@@ -20,7 +20,7 @@ curl "https://api.hrpartner.io/employees"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/employees";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -124,7 +124,8 @@ tag | text | Only return employees who have this tag (single tag only).
 is_active | true/false | Choose whether to return only active employees.
 is_terminated | true/false | Choose whether to return only terminated employees.
 can_logon | true/false | Choose whether to return only employee who can logon to their portal.
-reports_to | text | Only return employees who report to the employee with this Employee Code
+eligible_for_rehire | true/false | Choose whether to return only employee who are eligible for re-hiring.
+reports_to | text | Only return employees who report to the employee with this Employee Code.
 
 
 ### Examples
@@ -167,7 +168,7 @@ curl "https://api.hrpartner.io/employee/BLENA"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
 var endpoint = "https://api.hrpartner.io/employee/";
@@ -336,7 +337,7 @@ postbody = {
       "details": "blenkarthur@test.com",
       "is_primary": false
     }
-  ]  
+  ]
 }
 
 header = {'x-api-key' => 'ee095c2f58da4f36d087ca7794384f4d', :body => postbody}
@@ -361,7 +362,7 @@ curl "https://api.hrpartner.io/employee/BLENA"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 
 // Update Arthur's record with tax number, update custom fields with new salary and work times, add contractor tag, change mobile number and add new email
@@ -394,7 +395,7 @@ var postbody = postbody = {
       "details": "blenkarthur@test.com",
       "is_primary": false
     }
-  ]  
+  ]
 }
 
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}, body: postbody};
@@ -424,6 +425,7 @@ client.post(endpoint + employeecode, info, function(data, response) {
   "finished_at": "",
   "is_active": true,
   "is_terminated": false,
+  "eligible_for_rehire": false,
   "is_on_leave": true,
   "can_logon": true,
   "portal_username": "ABLENK001",
@@ -602,7 +604,7 @@ Parameter | Type | Description
 id | number | The internal ID number of the contact data. If included, the contact details will be **updated**. If omitted, the contact details will be **added**
 type | text | Must be one of: _Phone, Email, Mobile, Fax, Pager, Facebook, Twitter, Google+, LinkedIn, Skype, Instagram, GitHub_
 details<sup>*</sup> | text | The actual contact details (email address or number etc.)
-is_primary | true/false | Flag for whether this address is primary (will be used as default address for system emails or SMSs) 
+is_primary | true/false | Flag for whether this address is primary (will be used as default address for system emails or SMSs)
 
 
 #### Employee Addresses
