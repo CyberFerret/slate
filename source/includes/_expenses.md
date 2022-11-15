@@ -257,6 +257,8 @@ This endpoint retrieves all expense claims that are currently in the system.
 
 The _expenseReportType_ parameter must be one of the following:
 
+| Value | What it returns
+| ---- | ---------------
 detailed | A list of expense claim headers along with the associated individual expense lines and attachments.
 summary | A list of only the expense claim headers (without individual expense lines or attachments).
 transaction | A list of expense detail lines only.
