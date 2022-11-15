@@ -18,8 +18,10 @@ includes:
   - reminders
   - recruitment
   - timesheets
+  - expenses
   - projects
   - leave_requests
+  - leave_balances
   - modules
   - errors
 

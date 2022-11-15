@@ -151,8 +151,8 @@ employee | text | Return only leave requests for employees with this employee co
 department | text | Specify one or more department names (separated by commas) to only show leave requests within that department.
 location | text | Specify one or more location names (separated by commas) to only show leave requests within that location.
 leave_request_type | text | Specify whether you want to see leave requests for time off "taken" or TOIL/Flexi requests "added".
-status | text | Specify the leave request status, which can be one of: submitted, pending, approved, rejected, revoked, withdrawn
-absence_reason | text | Specify the leave policy name to isolate only leave requests against this particular policy/
+status | text | Specify the leave request status, which can be one of: submitted, pending, approved, rejected, revoked, withdrawn.
+absence_reason | text | Specify the leave policy name to isolate only leave requests against this particular policy.
 description | text | Looks for a keyword within the leave request description.
 reason | text | Looks for a keyword within the leave request reason text.
 notes | text | Looks for a keyword within the leave request response notes made by any approvers.
