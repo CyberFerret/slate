@@ -14,6 +14,7 @@ includes:
   - company
   - employees
   - employee_sub_modules
+  - birthdays_anniversaries
   - lookups
   - reminders
   - recruitment
@@ -96,9 +97,20 @@ The HR Partner API supports a simplified REST protocol.  You may make GET, POST 
 
 All calls to the endpoint _must_ be made using the HTTPS secure protocol.  Calls made over HTTP will either be automatically re-routed to HTTPS or else be ignored.
 
+# Rate Limits
+
+Our API currently has a rate limit of:
+
+* 60 GET or POST requests per second
+* A burst limit of 900 requests per 1 minute block  
+
+Please consider this when making calls to our API, and please allow for some results to take up to 5 seconds to be returned.  We currently don't implement 'paging' on our result sets (yet), so it can take some time for a large packet of JSON data to be returned to you.
+
+We have a general timeout of 60 seconds on API responses.  If you are constantly getting a 504 Timeout message, try adding some filter parameters to reduce the amount of data being returned to you.
+
 # Disclaimer
 
-Note: The API is still in Beta at this point in time, so the information below is subject to change with little notice.  Where possible, we will try not to make changes to our API interface which will break anything that was written using the older spec, but we reserve the right to make changes to improve performance or improve security without advanced notification during the Beta phase.
+Note: The API is still in 'early release' at this point in time, so the information below is subject to change with little notice.  Where possible, we will try not to make changes to our API interface which will break anything that was written using the older spec, but we reserve the right to make changes to improve performance or improve security without advanced notification during the early release phase.
 
 
 ---
