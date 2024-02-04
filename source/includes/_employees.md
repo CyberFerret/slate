@@ -48,6 +48,7 @@ client.get(endpoint, info, function(data, response) {
     "pay_point": "",
     "department": "Administration",
     "location": "Main Office",
+    "group": "Middleton Branch",
     "position": "Storeperson",
     "employment_status": "Full Time",
     "avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqyP6MU22Q/employee/Ppm/aardvark--barry.png",
@@ -69,6 +70,7 @@ client.get(endpoint, info, function(data, response) {
     "pay_point": "",
     "department": "Administration",
     "location": "Main Office",
+    "group": "Stanstead Branch",
     "position": "Accounts Clerk",
     "employment_status": "Full Time",
     "avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqyP6MU22Q/employee/EEM/bbardin--yolanda.png",
@@ -89,7 +91,8 @@ client.get(endpoint, info, function(data, response) {
     "is_on_leave": false,
     "pay_point": "",
     "department": "Warehouse",
-    "location": "Perth Branch",
+    "location": "Perth",
+    "group": "Middleton Branch",
     "position": "Driver",
     "employment_status": "Casual",
     "avatar": "",
@@ -113,6 +116,7 @@ Parameter | Type | Description
 search | text | Return only employees whose first or last names match this search text.
 department | text | Specify one or more department names (separated by commas) to only show employees within that department.
 location | text | Only return employees within this location.
+group | text | Only return employees within this group. _(See notice below for extra information)_
 position | text | Only return employees with this position description.
 employment_status | text | Only return employees with this employment status.
 gender_identity | text (M/F or extended identity full string) | Only return employees with this gender.
@@ -127,6 +131,10 @@ can_logon | true/false | Choose whether to return only employee who can logon to
 eligible_for_rehire | true/false | Choose whether to return only employee who are eligible for re-hiring.
 reports_to | text | Only return employees who report to the employee with this Employee Code.
 
+
+<aside class="notice">
+Even though you may have renamed the label for 'Group' to something else like 'Branch' or 'Entity' etc., within the API and returned data, this field will always be called _group_.
+</aside>
 
 ### Examples
 
@@ -216,6 +224,7 @@ client.get(endpoint + employeecode, info, function(data, response) {
   },
   "department": "Sales",
   "location": "Main Office",
+  "group": "Middleton Branch",
   "position": "Warehouse Supervisor",
   "employment_status": "Full Time",
   "reports_to": "BURRS",
@@ -444,6 +453,7 @@ client.post(endpoint + employeecode, info, function(data, response) {
   },
   "department": "Sales",
   "location": "Main Office",
+  "group": "Middleton Branch",
   "position": "Warehouse Supervisor",
   "employment_status": "Contract",
   "reports_to": "BURRS",

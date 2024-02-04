@@ -121,6 +121,7 @@ Parameter | Type | Description
 employee | text | Specify the employee code to only see the absence records for that particular employee.
 department | text | Specify one or more department names (separated by commas) to only show employee absences within that department.
 location | text | Only return employees within this location.
+group | text | Only return employees within this group.
 type | text | Specifies whether you want "taken" leave records or "added" leave (TOIL/Flexi)
 absence_reason | text | Return only absence records with this particular absence reason.
 duration_from, duration_to | number | Return only leave records with a duration between these values (inclusive).

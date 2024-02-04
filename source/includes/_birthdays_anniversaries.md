@@ -50,8 +50,9 @@ client.get(endpoint, info, function(data, response) {
 		"is_terminated": false,
 		"is_on_leave": false,
 		"department": "Customer Support",
-		"location": "Perth Branch",
+		"location": "Perth",
 		"position": "Customer Service Rep",
+    "group": "Middleton Branch",
 		"employment_status": "Full Time",
 		"avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqyjf7Y22Q%2Femployee%2F28%2FLesa%20Gregory.jpg",
 		"email": "devan+lesa@blaze.com.au",
@@ -71,6 +72,7 @@ client.get(endpoint, info, function(data, response) {
 		"is_on_leave": false,
 		"department": "Production",
 		"location": "Main Office",
+    "group": "Gotham Branch",
 		"position": "Assembly Line Worker",
 		"employment_status": "Casual",
 		"avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqyjf7Y22Q%2Femployee%2F32%2FCurtis%20Fletcher.jpg",
@@ -161,7 +163,8 @@ client.get(endpoint, info, function(data, response) {
 		"is_terminated": false,
 		"is_on_leave": true,
 		"department": "Personnel",
-		"location": "Sydney Branch",
+		"location": "Sydney",
+    "group": "Middleton Branch"
 		"position": "Intern",
 		"employment_status": "Casual",
 		"avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqyP6uyP9Q%2Femployee%2F9%2FBella%20Lane.jpg",
@@ -182,6 +185,7 @@ client.get(endpoint, info, function(data, response) {
 		"is_on_leave": false,
 		"department": "Administration",
 		"location": "Main Office",
+    "group": "Stanstead Branch",
 		"position": "Storeperson",
 		"employment_status": "Full Time",
 		"avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqy6uyP92Q%2Femployee%2FPpm%2Faardvark--barry.png",
@@ -202,6 +206,7 @@ client.get(endpoint, info, function(data, response) {
 		"is_on_leave": false,
 		"department": "Development",
 		"location": "Remote Office",
+    "group": "Stanstead Branch",
 		"position": "Programmer",
 		"employment_status": "Part Time",
 		"avatar": "https://s3.amazonaws.com/hrpartner/_5jGmaQIuOL3uqyP6uyP9Q%2Femployee%2FQo5%2Flayman--daniel.png",
@@ -226,8 +231,9 @@ Please note that this call will only return Active, Non-Terminated employees.
 Parameter | Type | Description
 --------- | --------- | -----------
 department | text | Specify one or more department names (separated by commas) to only show employees within those departments.
-location | text | Specify one or more location names (separated by commas) to only show employees withi those locations.
-position | text | Specify one or more position names (separated by commas) to only show employees withi those positions.
+location | text | Specify one or more location names (separated by commas) to only show employees within those locations.
+position | text | Specify one or more position names (separated by commas) to only show employees within those positions.
+group | text | Specify one or more group names (separated by commas) to only show eployees within those groups.
 employment status | text | Specify one or more employment status names (separated by commas) to only show employees withi those employment statuses.
 start_month | number | Specify the starting month of the year to get results for (1=Jan, 2=Feb ... 12=Dec).
 end_month | number | Specify the ending month of the year to get results for (1=Jan, 2=Feb ... 12=Dec).

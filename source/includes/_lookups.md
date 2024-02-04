@@ -18,7 +18,7 @@ curl "https://api.hrpartner.io/lookups/absence_reasons"
 
 ```javascript
 var Client = require('node-rest-client').Client;
- 
+
 var client = new Client();
 var endpoint = "https://api.hrpartner.io/lookups/absence_reasons";
 var info = {headers: {"x-api-key":"ee095c2f58da4f36d087ca7794384f4d"}};
@@ -78,6 +78,7 @@ employment_statuses | Employment Status (e.g. Full Time, Part Time etc.)
 genders | Gender list (if extended gender identities turned on in company options)
 grievance_types | Grievance/Complaints/Harrassment types
 grievance_statuses | Grievance/Complaints/Harrassment statuses
+groups | Groups (which can be renamed by you to Branches or Entities etc.) used HR Partner
 interview_types | Interview/Meeting types
 locations | Locations used within HR Partner
 pay_levels | Pay levels used in Position records
