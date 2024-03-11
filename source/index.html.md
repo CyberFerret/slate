@@ -23,6 +23,7 @@ includes:
   - projects
   - leave_requests
   - leave_balances
+  - performances
   - modules
   - errors
 
