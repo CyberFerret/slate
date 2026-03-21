@@ -130,6 +130,11 @@ certificate_number | text | Return records with this text within the certificate
 absence_status | text | Return records which have this absence status set.
 comments | text | Search for this text within the comments field and return those.
 absence_date_from, absence_date_to | date (yyyy-mm-dd) | Return leave records that fall between these two dates (inclusive).
+show_linked_request | true/false | Return extra information on any linked leave requests associated with this absence entry in a `linked_request` child object.
+
+<aside class="warning">
+  NOTE: When using the <code>show_linked_request=true</code> parameter, please be aware that it will slow down the returning of data considerably due to the many extra database calls the system will need to make.  Please ensure that you set other parameters on the main query to limit the number of records returned in order that the query does not time out.
+</aside>aside>
 
 ### Examples
 
@@ -148,6 +153,10 @@ To get all 'Approved' leave records that occured during March 2020:
 To get all TOIL/Flexi additions for the month of April 2020:
 
 `GET https://api.hrpartner.io/absences?absence_date_from=2020-04-01&absence_date_to=2020-04-30&type=added`
+
+To get all TOIL/Flexi entries for "London" location and include the associated employee requests information:
+
+`GET https://api.hrpartner.io/absences?location=London&type=added&show_linked_request=true`
 
 
 ### Attachments
@@ -1202,6 +1211,7 @@ note | text | Return only notes with this partial text within the note text fiel
 created_date_from, created_date_to | date (yyyy-mm-dd) | Return notes that were created between these two dates (inclusive).
 updated_date_from, updated_date_to | date (yyyy-mm-dd) | Return only notes which were updated/modified between these two dates (inclusive).
 tags | text | Return only notes that have the matching hashtags.  Specify tags in a comma separated list without the leading '#' character.
+include_events | true/false | Include event historical information on who added/changed/deleted the note. (Default: false)
 
 ### Examples
 
@@ -1221,6 +1231,10 @@ To find all notes for employee code WILSJ that have the '#late' or '#workshop' h
 
 `GET https://api.hrpartner.io/notes?employee=WILSJ&tags=late,workshop`
 
+To find all notes that have the '#warning' hashtag and include historical events data on who made changes:
+
+`GET https://api.hrpartner.io/notes?tags=warning&include_events=true`
+
 ### Attachments
 
 If a note includes attachments, they will be returned as an object array underneath the main note record.  The structure of this object is:
@@ -1231,6 +1245,15 @@ description | text | The file name
 url | text | The URL path to the file
 size | number | The size of the file in bytes
 
+### Events
+
+If you choose to include event details showing who made changes to the note, then the structure of this object is:
+
+Parameter | Type | Description
+--------- | ---- | -----------
+action | text | The action type (either "Added", "Changed" or "Deleted")
+actioned_at | datetime | The date and time that the action took place
+actioned_by | text | The name of the admin user who created the action
 
 
 ## Positions

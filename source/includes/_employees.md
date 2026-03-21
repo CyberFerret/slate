@@ -542,7 +542,7 @@ This endpoint either updates an existing employee, or adds a new employee (if th
 
 ### HTTP Request
 
-`POST https://api.hrpartner.io/employee/{employeeCode}`
+`POST https://api.hrpartner.io/employee`
 
 A successful POST will return an employee object (see the `GET /employee` call above) upon successful modification or addition.
 
@@ -582,7 +582,6 @@ _<sup>*</sup> - Mandatory (required) field_
 
 _<sup>+</sup> - If the field contains data that isn't already in HR Partner, it will be added to the list of drop down options_
 
-Please note that the employee code is also required in the POST body as well as the URL for added verification and security.
 
 #### Custom Data
 
